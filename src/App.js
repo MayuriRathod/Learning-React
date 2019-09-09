@@ -5,21 +5,25 @@ import PropTypes from 'prop-types';
   - This maintains state
 */
 class App extends React.Component {
-  render() {
-    let props = this.props
-    return <h1>{props.txt}</h1>
+  constructor() {
+    super();
+    this.state = {
+      txt: "this is the state text"
+    }
   }
-}
 
-// Props type for the App
-App.propTypes = {
-  txt: PropTypes.string,
-  cat: PropTypes.number.isRequired
-}
+  update(e) {
+    this.setState({txt: e.target.value})
+  }
 
-// Default props for the App in case the props are not provided
-App.defaultProps = {
-  txt: "This is the default text"
+  render() {
+    return (
+      <div>
+        <input type="text" onChange={this.update.bind(this)} />
+        <h1>{this.state.txt}</h1>
+      </div>
+    )
+  }
 }
 
 export default App;
