@@ -1,18 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /* Class Approach
   - This maintains state
 */
 class App extends React.Component {
   render() {
-    // return <h1>Hello JSX....!</h1>
-    return React.createElement('h1', null, 'Hello Create Element...!')
+    let props = this.props
+    return <h1>{props.txt}</h1>
   }
 }
 
-/* JSX approach
-  - This is stateless
-*/
-// const App = () => <h1>Hello, I am State Less </h1>
+// Props type for the App
+App.propTypes = {
+  txt: PropTypes.string,
+  cat: PropTypes.number.isRequired
+}
+
+// Default props for the App in case the props are not provided
+App.defaultProps = {
+  txt: "This is the default text"
+}
 
 export default App;
