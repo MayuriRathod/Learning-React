@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 /* Class Approach
   - This maintains state
@@ -19,11 +18,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <input type="text" onChange={this.update.bind(this)} />
+        <Widget update={this.update.bind(this)} />
         <h1>{this.state.txt}</h1>
       </div>
     )
   }
 }
+
+const Widget = (props) => <input type="text" onChange={props.update} />
 
 export default App;
